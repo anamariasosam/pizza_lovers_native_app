@@ -1,48 +1,39 @@
 import React from 'react';
 import {
+  Button,
+  Card,
   Text,
-  View,
-  StyleSheet,
-  Image,
-  Button
-} from 'react-native';
+} from 'react-native-elements';
 
-import Card from './../components/Card';
-import CardSection from './../components/CardSection';
-
-const PizzaDetail = ({ pizza }) => {
+const PizzaDetail = ({ pizza, upVote }) => {
   const {
-    image
+    image,
+    name,
+    ingredients,
+    votes,
+    id
   } = pizza;
 
-  const {
-    songImage,
-  } = styles;
-
   return (
-    <Card>
-      <CardSection>
-        <Image source={{ uri: image }} style={songImage} />
-      </CardSection>
-
-      <CardSection>
-        <Button
-          onPress={() => console.log('HIIII')}
-          title="More info"
-          accessibilityLabel="Learn more about this artist"
-        />
-      </CardSection>
+    <Card
+      title={name}
+      image={{uri: 'https://www.cicis.com/media/1138/pizza_trad_pepperoni.png'}}
+      imageStyle={{flex:1, alignSelf: 'stretch'}}
+    >
+      <Text style={{marginBottom: 10}}>
+        {ingredients}
+      </Text>
+      <Button
+        raised
+        icon={{name: 'local-pizza'}}
+        backgroundColor='#f04e43'
+        buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+        title={`${votes}`}
+        fontSize={20}
+        onPress={() => upVote(id)}
+      />
     </Card>
   );
 };
-
-const styles = StyleSheet.create({
-  songImage: {
-    height: 300,
-    width: null,
-    flex: 1,
-  }
-});
-
 
 export default PizzaDetail;
