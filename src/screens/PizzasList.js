@@ -8,7 +8,7 @@ axios.defaults.baseURL = 'http://railsgirlspereira.herokuapp.com/';
 
 class PizzasList extends Component {
   static navigationOptions = {
-    title: 'Pizza Lovers',
+    title: 'Pizza Lovers 🍕',
   };
 
   constructor() {
@@ -33,9 +33,9 @@ class PizzasList extends Component {
 
   upVote(id) {
     axios
-    .post(`/pizzas/${id}/votes`)
-    .then(this.populatePizzas)
-    .catch(console.log)
+      .post(`/pizzas/${id}/votes`)
+      .then(this.populatePizzas)
+      .catch(console.log)
   }
 
   renderPizzas() {
