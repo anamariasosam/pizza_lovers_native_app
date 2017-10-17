@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import PizzaDetail from './../components/PizzaDetail';
 
-axios.defaults.baseURL = 'http://railsgirlspereira.herokuapp.com/';
+axios.defaults.baseURL = 'https://railspizzalovers.herokuapp.com/api/v1/';
 
 class PizzasList extends Component {
   static navigationOptions = {
@@ -27,13 +27,13 @@ class PizzasList extends Component {
 
   populatePizzas() {
     return axios
-      .get('/pizzas.json')
+      .get('/pizzas')
       .then(response => this.setState({ pizzas: response.data }));
   }
 
   upVote(id) {
     axios
-      .post(`/pizzas/${id}/votes`)
+      .post(`/pizzas/${id}/upvote`)
       .then(this.populatePizzas)
       .catch(console.log)
   }

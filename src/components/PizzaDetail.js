@@ -7,7 +7,7 @@ import {
 
 const PizzaDetail = ({ pizza, upVote }) => {
   const {
-    image,
+    image_url,
     name,
     ingredients,
     votes,
@@ -17,7 +17,7 @@ const PizzaDetail = ({ pizza, upVote }) => {
   return (
     <Card
       title={name}
-      image={{uri: 'https://www.cicis.com/media/1138/pizza_trad_pepperoni.png'}}
+      image={{uri: image_url}}
       imageStyle={{flex:1, alignSelf: 'stretch'}}
     >
       <Text style={{marginBottom: 10}}>
