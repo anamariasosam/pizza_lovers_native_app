@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import PizzaDetail from './../components/PizzaDetail';
 
-axios.defaults.baseURL = 'https://railspizzalovers.herokuapp.com/api/v1/';
+axios.defaults.baseURL = 'http://railspizzalovers.herokuapp.com/api/v1';
 
 class PizzasList extends Component {
   static navigationOptions = {
