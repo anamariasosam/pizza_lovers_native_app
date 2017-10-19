@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView } from 'react-native';
+import { ActivityIndicator, ScrollView } from 'react-native';
 import axios from 'axios';
 
 import PizzaDetail from './../components/PizzaDetail';
@@ -15,6 +15,7 @@ class PizzasList extends Component {
     super();
     this.state = {
       pizzas: [],
+      loading: true,
     };
 
     this.populatePizzas = this.populatePizzas.bind(this);
@@ -28,7 +29,7 @@ class PizzasList extends Component {
   populatePizzas() {
     return axios
       .get('/pizzas')
-      .then(response => this.setState({ pizzas: response.data }));
+      .then(response => this.setState({ pizzas: response.data, loading: false }));
   }
 
   upVote(id) {
@@ -47,6 +48,11 @@ class PizzasList extends Component {
     return (
       <ScrollView>
         { this.renderPizzas() }
+        <ActivityIndicator
+          animating={this.state.loading}
+          style={{ height: 50 }}
+          size="small"
+        />
       </ScrollView>
     );
   }
